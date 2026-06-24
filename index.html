@@ -1,448 +1,330 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 لعبة تخمين الرقم</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جولك تهكر؟ 😄</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #fff;
-            padding: 20px;
-        }
+    body {
+      background: linear-gradient(145deg, #0b0e1a 0%, #1a1f2f 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', 'Cairo', system-ui, sans-serif;
+      padding: 1rem;
+    }
 
-        .container {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(15px);
-            padding: 40px 35px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            transition: 0.3s;
-        }
+    .card {
+      max-width: 600px;
+      width: 100%;
+      background: rgba(22, 28, 46, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 3.5rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(120, 200, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s ease;
+      text-align: center;
+    }
 
-        h1 {
-            font-size: 2.4rem;
-            margin-bottom: 8px;
-            color: #f5c842;
-            text-shadow: 0 0 20px rgba(245, 200, 66, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
+    .card:hover {
+      box-shadow: 0 30px 60px rgba(0, 20, 40, 0.9), 0 0 0 3px rgba(0, 200, 255, 0.3);
+    }
 
-        .sub {
-            color: #aaa;
-            margin-bottom: 25px;
-            font-size: 0.95rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-            padding-bottom: 15px;
-        }
+    .icon-hacker {
+      font-size: 4.2rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      animation: float 3.5s ease-in-out infinite;
+      filter: drop-shadow(0 8px 12px rgba(0, 150, 255, 0.3));
+    }
 
-        .range-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 16px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+    @keyframes float {
+      0% { transform: translateY(0px) scale(1); }
+      50% { transform: translateY(-12px) scale(1.05); }
+      100% { transform: translateY(0px) scale(1); }
+    }
 
-        .range-box span {
-            font-size: 1.6rem;
-            font-weight: bold;
-            color: #f5c842;
-            margin: 0 8px;
-        }
+    h1 {
+      color: #b3e4ff;
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
+      margin-bottom: 0.35rem;
+      word-break: break-word;
+    }
 
-        .input-group {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
-        }
+    .sub-title {
+      color: #8bb3d9;
+      font-size: 1.2rem;
+      font-weight: 400;
+      opacity: 0.9;
+      margin-bottom: 1.8rem;
+      border-bottom: 1px dashed rgba(100, 200, 255, 0.25);
+      padding-bottom: 1rem;
+    }
 
-        .input-group input {
-            flex: 1;
-            padding: 14px 18px;
-            border-radius: 14px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.07);
-            color: #fff;
-            font-size: 1.2rem;
-            outline: none;
-            transition: 0.3s;
-            min-width: 120px;
-        }
+    .joke-box {
+      background: rgba(0, 20, 40, 0.5);
+      border-radius: 3rem;
+      padding: 1.2rem 1.8rem;
+      margin: 1.8rem 0 2.2rem;
+      border-left: 5px solid #00d0ff;
+      box-shadow: inset 0 0 20px rgba(0, 100, 200, 0.1);
+      backdrop-filter: blur(4px);
+    }
 
-        .input-group input:focus {
-            border-color: #f5c842;
-            background: rgba(255, 255, 255, 0.12);
-            box-shadow: 0 0 25px rgba(245, 200, 66, 0.1);
-        }
+    .joke-text {
+      font-size: 1.7rem;
+      font-weight: 500;
+      color: #e0f2ff;
+      line-height: 1.5;
+      word-break: break-word;
+      min-height: 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
 
-        .input-group input::placeholder {
-            color: #888;
-            font-size: 0.9rem;
-        }
+    .joke-text span {
+      background: rgba(0, 200, 255, 0.1);
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      font-size: 1.8rem;
+    }
 
-        .btn {
-            padding: 14px 28px;
-            border: none;
-            border-radius: 14px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: 0.3s;
-            background: #f5c842;
-            color: #1a1a2e;
-            flex: 1;
-            min-width: 100px;
-        }
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
 
-        .btn:hover {
-            transform: scale(1.03);
-            box-shadow: 0 8px 30px rgba(245, 200, 66, 0.3);
-        }
+    .btn {
+      background: rgba(20, 40, 70, 0.7);
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 60px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d6edff;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(100, 200, 255, 0.2);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.3px;
+      flex: 1 1 auto;
+      justify-content: center;
+    }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.08);
-            color: #fff;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
+    .btn-primary {
+      background: #0066cc;
+      background: linear-gradient(145deg, #0077ff, #0055bb);
+      border: 1px solid #4ab3ff;
+      color: white;
+      box-shadow: 0 0 20px rgba(0, 120, 255, 0.3);
+    }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: none;
-        }
+    .btn-primary:hover {
+      background: linear-gradient(145deg, #1a8aff, #0066dd);
+      transform: scale(1.02);
+      box-shadow: 0 0 30px #0080ff80;
+      border-color: #8acbff;
+    }
 
-        .btn-danger {
-            background: #e74c5e;
-            color: #fff;
-        }
+    .btn-secondary {
+      background: rgba(40, 60, 90, 0.6);
+      border-color: rgba(200, 200, 255, 0.15);
+    }
 
-        .btn-danger:hover {
-            background: #c0392b;
-            box-shadow: 0 8px 30px rgba(231, 76, 94, 0.3);
-        }
+    .btn-secondary:hover {
+      background: rgba(70, 100, 150, 0.7);
+      transform: scale(1.02);
+      border-color: rgba(200, 230, 255, 0.4);
+    }
 
-        .message {
-            padding: 16px;
-            border-radius: 14px;
-            margin: 15px 0;
-            font-size: 1.1rem;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.3s;
-        }
+    .btn:active {
+      transform: scale(0.96);
+    }
 
-        .message.win {
-            background: rgba(46, 213, 115, 0.15);
-            border-color: #2ed573;
-            color: #2ed573;
-        }
+    .footer-meta {
+      margin-top: 2.8rem;
+      font-size: 0.95rem;
+      color: #6a8baa;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+    }
 
-        .message.lose {
-            background: rgba(231, 76, 94, 0.15);
-            border-color: #e74c5e;
-            color: #e74c5e;
-        }
+    .badge {
+      background: rgba(0, 180, 255, 0.08);
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid rgba(0, 180, 255, 0.1);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
 
-        .message.hint {
-            background: rgba(245, 200, 66, 0.1);
-            border-color: #f5c842;
-            color: #f5c842;
-        }
+    .badge i {
+      font-style: normal;
+      display: inline-block;
+      animation: wink 2s infinite;
+    }
 
-        .stats {
-            display: flex;
-            justify-content: space-between;
-            margin: 15px 0;
-            padding: 12px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.95rem;
-            color: #aaa;
-            flex-wrap: wrap;
-            gap: 5px;
-        }
+    @keyframes wink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
 
-        .stats span {
-            color: #fff;
-            font-weight: bold;
-        }
-
-        .history {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .history .badge {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .history .badge.low {
-            border-color: rgba(52, 152, 219, 0.3);
-            color: #5dade2;
-        }
-
-        .history .badge.high {
-            border-color: rgba(231, 76, 94, 0.3);
-            color: #e74c5e;
-        }
-
-        .history .badge.correct {
-            border-color: #2ed573;
-            color: #2ed573;
-            background: rgba(46, 213, 115, 0.15);
-        }
-
-        .footer {
-            margin-top: 25px;
-            font-size: 0.8rem;
-            color: #666;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .container { padding: 25px 20px; }
-            h1 { font-size: 1.8rem; }
-            .input-group { flex-direction: column; }
-            .btn { width: 100%; }
-        }
-    </style>
+    @media (max-width: 480px) {
+      .card { padding: 1.8rem 1.2rem; border-radius: 2.5rem; }
+      h1 { font-size: 2.1rem; }
+      .joke-text { font-size: 1.4rem; }
+      .btn { font-size: 1rem; padding: 0.7rem 1.2rem; }
+      .icon-hacker { font-size: 3.2rem; }
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <!-- أيقونة "هاكر" -->
+    <div class="icon-hacker">🧑‍💻</div>
 
-    <div class="container">
-        <h1>🎯 تخمين الرقم</h1>
-        <div class="sub">خمن الرقم السري بين <span id="minDisplay">1</span> و <span id="maxDisplay">100</span></div>
+    <h1>جولك تهكر؟</h1>
+    <div class="sub-title">✨ سكربت المزح التقني ✨</div>
 
-        <div class="range-box">
-            🔢 أدخل رقمك:
-        </div>
-
-        <div class="input-group">
-            <input type="number" id="guessInput" placeholder="مثلاً 42" min="1" max="100">
-            <button class="btn" id="guessBtn">✅ خمّن</button>
-        </div>
-
-        <div id="message" class="message">🎯 ابدأ التخمين!</div>
-
-        <div class="stats">
-            <div>🔄 المحاولات: <span id="attempts">0</span></div>
-            <div>🎯 الرقم السري: <span id="secretDisplay">❓</span></div>
-        </div>
-
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
-            <button class="btn btn-secondary" id="newGameBtn">🔄 لعبة جديدة</button>
-            <button class="btn btn-danger" id="resetBtn">🗑️ إعادة تعيين</button>
-        </div>
-
-        <div id="historyContainer">
-            <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">📜 تاريخ التخمينات:</div>
-            <div class="history" id="historyList">
-                <span style="color: #666; font-size: 0.85rem;">لا توجد تخمينات بعد</span>
-            </div>
-        </div>
-
-        <div class="footer">🕹️ العب واستمتع | طور مهارات التخمين</div>
+    <!-- منطقة النكتة / الرسالة -->
+    <div class="joke-box">
+      <div class="joke-text" id="jokeDisplay">
+        <span>🤖</span> انقر فوق الزر 👇
+      </div>
     </div>
 
-    <script>
-        // =============================================
-        //  إعدادات اللعبة
-        // =============================================
-        const MIN = 1;
-        const MAX = 100;
+    <!-- أزرار التفاعل -->
+    <div class="btn-group">
+      <button class="btn btn-primary" id="hackBtn">
+        <span>⚡</span> تهكر 😈
+      </button>
+      <button class="btn btn-secondary" id="resetBtn">
+        <span>🔄</span> رجّع المزح
+      </button>
+    </div>
 
-        let secretNumber = 0;
-        let attempts = 0;
-        let gameOver = false;
-        let history = [];
+    <!-- تذييل مع جملة "أمزح معك يا صديقي" -->
+    <div class="footer-meta">
+      <span class="badge">💬 <i>أمزح معك يا صديقي</i></span>
+      <span class="badge">🛡️ #للضحك_فقط</span>
+    </div>
+  </div>
 
-        // =============================================
-        //  عناصر DOM
-        // =============================================
-        const guessInput = document.getElementById('guessInput');
-        const guessBtn = document.getElementById('guessBtn');
-        const newGameBtn = document.getElementById('newGameBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const messageEl = document.getElementById('message');
-        const attemptsEl = document.getElementById('attempts');
-        const secretDisplay = document.getElementById('secretDisplay');
-        const historyList = document.getElementById('historyList');
-        const minDisplay = document.getElementById('minDisplay');
-        const maxDisplay = document.getElementById('maxDisplay');
+  <script>
+    (function() {
+      "use strict";
 
-        // =============================================
-        //  دوال اللعبة
-        // =============================================
-        function generateSecret() {
-            return Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
-        }
+      // مصدر النكات (جمل المزح) 
+      const jokes = [
+        "🧠 جارٍ اختراق عقلك... تم! أنت الآن تفكر بلغة البايثون 🐍",
+        "📡 جارٍ رفع مستوى التهكير... اكتمل! أنت هاكر من الدرجة الخامسة 😎",
+        "💾 تم اختراق ملفاتك السرية... وجدنا قائمة مشترياتك من البقالة 🛒",
+        "🖥️ نظامك تحت السيطرة... لكننا وجدنا صور قطط فقط 🐱",
+        "🔓 كلمة المرور الخاصة بك هي: 123456... أمزح معك يا صديقي 😂",
+        "⚙️ تهكير ناجح! لكننا أعدنا ضبط كل شيء كما كان ✨",
+        "📀 جارٍ تنزيل رامات إضافية... مزحة! بس نزلنا كوب قهوة ☕",
+        "🎮 تم تفعيل وضع الجوكر... هاهاها، بس أمزح معك يا صديقي 🤡",
+        "🔐 حسابك آمن 100%... لكننا غيرنا خلفية سطح المكتب إلى صور ديناصورات 🦕",
+        "🧩 اختراق وهمي بنسبة 99%... الـ 1% المتبقية هي ابتسامتك 😄"
+      ];
 
-        function resetGame() {
-            secretNumber = generateSecret();
-            attempts = 0;
-            gameOver = false;
-            history = [];
-            updateUI();
-            messageEl.className = 'message';
-            messageEl.textContent = '🎯 لعبة جديدة! ابدأ التخمين';
-            guessInput.disabled = false;
-            guessBtn.disabled = false;
-            guessInput.value = '';
-            guessInput.focus();
-            secretDisplay.textContent = '❓';
-        }
+      // العناصر
+      const jokeDisplay = document.getElementById('jokeDisplay');
+      const hackBtn = document.getElementById('hackBtn');
+      const resetBtn = document.getElementById('resetBtn');
 
-        function endGame(won) {
-            gameOver = true;
-            guessInput.disabled = true;
-            guessBtn.disabled = true;
-            secretDisplay.textContent = secretNumber;
+      // متغير لتخزين آخر نكتة تم عرضها (لتجنب التكرار المتتالي)
+      let lastJokeIndex = -1;
 
-            if (won) {
-                messageEl.className = 'message win';
-                messageEl.textContent = `🎉 مبروك! الرقم كان ${secretNumber} في ${attempts} محاولة! 🎉`;
-            } else {
-                messageEl.className = 'message lose';
-                messageEl.textContent = `😢 انتهت المحاولات! الرقم كان ${secretNumber}`;
-            }
-        }
+      // دالة اختيار نكتة عشوائية (مع تجنب تكرار نفس النكتة مرتين متتاليتين)
+      function getRandomJoke() {
+        if (jokes.length === 0) return "😅 لا توجد نكات... أمزح معك يا صديقي!";
+        if (jokes.length === 1) return jokes[0];
 
-        function handleGuess() {
-            if (gameOver) {
-                messageEl.className = 'message';
-                messageEl.textContent = '🔄 انتهت اللعبة! اضغط "لعبة جديدة" للعب مرة أخرى';
-                return;
-            }
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * jokes.length);
+        } while (newIndex === lastJokeIndex);
+        
+        lastJokeIndex = newIndex;
+        return jokes[newIndex];
+      }
 
-            const rawValue = guessInput.value.trim();
-            if (rawValue === '') {
-                messageEl.className = 'message hint';
-                messageEl.textContent = '⚠️ أدخل رقماً أولاً!';
-                return;
-            }
+      // دالة تحديث النكتة مع تأثير بسيط
+      function updateJoke(text) {
+        // إضافة رمز تحميل وهمي لمتعة بصرية
+        jokeDisplay.style.transition = 'opacity 0.15s';
+        jokeDisplay.style.opacity = '0.5';
+        
+        setTimeout(() => {
+          // نضع النص مع أيقونة مرحة في البداية (اختياري)
+          // لكننا نحافظ على الأيقونة الموجودة في النص نفسه (من الجمل)
+          jokeDisplay.innerHTML = text;
+          jokeDisplay.style.opacity = '1';
+        }, 120);
+      }
 
-            const guess = Number(rawValue);
-            if (isNaN(guess) || !Number.isInteger(guess)) {
-                messageEl.className = 'message hint';
-                messageEl.textContent = '⚠️ يرجى إدخال رقم صحيح';
-                guessInput.value = '';
-                return;
-            }
+      // حدث زر "تهكر" 😈
+      function handleHack() {
+        const randomJoke = getRandomJoke();
+        // نضيف لمسة: في بعض الأحيان نضع كلمة "تهكر" قبل النكتة
+        // لكن الجمل تحتوي بالفعل على نكات, نتركها كما هي
+        updateJoke(randomJoke);
+      }
 
-            if (guess < MIN || guess > MAX) {
-                messageEl.className = 'message hint';
-                messageEl.textContent = `⚠️ الرقم يجب أن يكون بين ${MIN} و ${MAX}`;
-                guessInput.value = '';
-                return;
-            }
+      // حدث زر "رجّع المزح" (يعرض رسالة ثابتة أو نكتة محددة)
+      function handleReset() {
+        // نعرض جملة "أمزح معك يا صديقي" بشكل واضح مع لمسة
+        const resetMessage = `🤝 أمزح معك يا صديقي ... اضغط "تهكر" للضحك 😄`;
+        updateJoke(resetMessage);
+        // إعادة تعيين lastJokeIndex ليسمح بتكرار أي نكتة بعد reset
+        lastJokeIndex = -1;
+      }
 
-            // ✅ تخمين صحيح
-            attempts++;
-            history.push(guess);
-            guessInput.value = '';
-            guessInput.focus();
+      // إضافة مستمعات الأحداث
+      hackBtn.addEventListener('click', handleHack);
+      resetBtn.addEventListener('click', handleReset);
 
-            if (guess === secretNumber) {
-                endGame(true);
-                updateUI();
-                return;
-            }
+      // عند تحميل الصفحة نعرض رسالة ترحيبية (مزج بين الترحيب واللمسة)
+      window.addEventListener('DOMContentLoaded', function() {
+        // نعرض رسالة افتتاحية لطيفة
+        const welcomeMsg = `👋 أهلاً! اضغط "تهكر" ... أمزح معك يا صديقي 🤗`;
+        jokeDisplay.innerHTML = welcomeMsg;
+        // نجعل lastJokeIndex = -1 عادي
+        lastJokeIndex = -1;
+      });
 
-            // ❌ تخمين خاطئ
-            const isLow = guess < secretNumber;
-            messageEl.className = 'message hint';
-            messageEl.textContent = isLow
-                ? `📈 الرقم ${guess} أقل من الرقم السري. زوّد!`
-                : `📉 الرقم ${guess} أكبر من الرقم السري. نقّص!`;
+      // اختياري: إضافة تأثير كتابة عند الضغط (مجرد تحسين بسيط)
+      // لكننا نكتفي بالتأثير الموجود
 
-            // حد أقصى 10 محاولات
-            if (attempts >= 10) {
-                endGame(false);
-            }
-
-            updateUI();
-        }
-
-        // =============================================
-        //  تحديث الواجهة
-        // =============================================
-        function updateUI() {
-            attemptsEl.textContent = attempts;
-
-            // تحديث تاريخ التخمينات
-            if (history.length === 0) {
-                historyList.innerHTML = '<span style="color: #666; font-size: 0.85rem;">لا توجد تخمينات بعد</span>';
-                return;
-            }
-
-            let html = '';
-            history.forEach((num, index) => {
-                let cls = 'badge';
-                if (num === secretNumber && gameOver) cls += ' correct';
-                else if (num < secretNumber) cls += ' low';
-                else cls += ' high';
-                html += `<span class="${cls}">#${index + 1}: ${num}</span>`;
-            });
-            historyList.innerHTML = html;
-        }
-
-        // =============================================
-        //  الأحداث
-        // =============================================
-        guessBtn.addEventListener('click', handleGuess);
-
-        guessInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                handleGuess();
-            }
-        });
-
-        newGameBtn.addEventListener('click', resetGame);
-
-        resetBtn.addEventListener('click', () => {
-            if (confirm('🗑️ هل تريد حذف كل التخمينات وبدء لعبة جديدة؟')) {
-                resetGame();
-            }
-        });
-
-        // =============================================
-        //  بدء اللعبة
-        // =============================================
-        minDisplay.textContent = MIN;
-        maxDisplay.textContent = MAX;
-        resetGame();
-    </script>
-
+      console.log('✅ سكربت المزح جاهز! - #أمزح_معك_يا_صديقي');
+    })();
+  </script>
 </body>
 </html>
