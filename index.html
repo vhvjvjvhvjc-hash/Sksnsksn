@@ -3,299 +3,446 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>القرآن الكريم</title>
+    <title>🎯 لعبة تخمين الرقم</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Amiri', 'Traditional Arabic', serif;
-            background: linear-gradient(135deg, #0d1b2a 0%, #1b3a4b 100%);
-            color: #e8d5b7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             min-height: 100vh;
-            padding: 20px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            color: #fff;
+            padding: 20px;
         }
+
         .container {
-            max-width: 800px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            padding: 40px 35px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            max-width: 500px;
             width: 100%;
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,215,150,0.2);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-        }
-        h1 {
             text-align: center;
-            font-size: 2.5rem;
-            color: #f0d8a8;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(200,150,50,0.3);
-        }
-        .sub {
-            text-align: center;
-            color: #b8a080;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-        }
-        select, button {
-            width: 100%;
-            padding: 14px;
-            font-size: 1.1rem;
-            border-radius: 12px;
-            border: 1px solid rgba(255,215,150,0.3);
-            background: rgba(255,255,255,0.08);
-            color: #e8d5b7;
-            margin-bottom: 15px;
-            font-family: inherit;
-            outline: none;
             transition: 0.3s;
         }
-        select option {
-            background: #1b2a3a;
-            color: #e8d5b7;
+
+        h1 {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            color: #f5c842;
+            text-shadow: 0 0 20px rgba(245, 200, 66, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
-        select:focus, button:hover {
-            border-color: #f0d8a8;
-            background: rgba(255,215,150,0.15);
+
+        .sub {
+            color: #aaa;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 15px;
         }
-        button {
-            cursor: pointer;
-            background: rgba(200,150,50,0.2);
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        button:hover {
-            background: rgba(200,150,50,0.35);
-        }
-        #ayaat {
-            margin-top: 20px;
+
+        .range-box {
+            background: rgba(255, 255, 255, 0.05);
             padding: 15px;
-            background: rgba(0,0,0,0.3);
-            border-radius: 12px;
-            border-right: 4px solid #f0d8a8;
-            max-height: 450px;
-            overflow-y: auto;
-            line-height: 2.2;
-            font-size: 1.3rem;
-            text-align: right;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        #ayaat .aya {
-            padding: 8px 0;
-            border-bottom: 1px solid rgba(255,215,150,0.08);
+
+        .range-box span {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: #f5c842;
+            margin: 0 8px;
         }
-        #ayaat .aya:last-child {
-            border-bottom: none;
+
+        .input-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
         }
-        .aya-number {
-            color: #f0d8a8;
-            font-size: 0.8rem;
-            background: rgba(200,150,50,0.2);
-            padding: 2px 10px;
+
+        .input-group input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.07);
+            color: #fff;
+            font-size: 1.2rem;
+            outline: none;
+            transition: 0.3s;
+            min-width: 120px;
+        }
+
+        .input-group input:focus {
+            border-color: #f5c842;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 0 25px rgba(245, 200, 66, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            background: #f5c842;
+            color: #1a1a2e;
+            flex: 1;
+            min-width: 100px;
+        }
+
+        .btn:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 30px rgba(245, 200, 66, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: none;
+        }
+
+        .btn-danger {
+            background: #e74c5e;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #c0392b;
+            box-shadow: 0 8px 30px rgba(231, 76, 94, 0.3);
+        }
+
+        .message {
+            padding: 16px;
+            border-radius: 14px;
+            margin: 15px 0;
+            font-size: 1.1rem;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: 0.3s;
+        }
+
+        .message.win {
+            background: rgba(46, 213, 115, 0.15);
+            border-color: #2ed573;
+            color: #2ed573;
+        }
+
+        .message.lose {
+            background: rgba(231, 76, 94, 0.15);
+            border-color: #e74c5e;
+            color: #e74c5e;
+        }
+
+        .message.hint {
+            background: rgba(245, 200, 66, 0.1);
+            border-color: #f5c842;
+            color: #f5c842;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            padding: 12px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.95rem;
+            color: #aaa;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .stats span {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .history {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .history .badge {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 14px;
             border-radius: 20px;
-            margin-left: 8px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        .loader {
-            text-align: center;
-            color: #b8a080;
-            padding: 30px;
+
+        .history .badge.low {
+            border-color: rgba(52, 152, 219, 0.3);
+            color: #5dade2;
         }
+
+        .history .badge.high {
+            border-color: rgba(231, 76, 94, 0.3);
+            color: #e74c5e;
+        }
+
+        .history .badge.correct {
+            border-color: #2ed573;
+            color: #2ed573;
+            background: rgba(46, 213, 115, 0.15);
+        }
+
         .footer {
             margin-top: 25px;
-            text-align: center;
-            color: #6a5a4a;
             font-size: 0.8rem;
+            color: #666;
         }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb { background: #f0d8a8; border-radius: 10px; }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container { padding: 25px 20px; }
+            h1 { font-size: 1.8rem; }
+            .input-group { flex-direction: column; }
+            .btn { width: 100%; }
+        }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>📖 القرآن الكريم</h1>
-        <div class="sub">— آيات وسور —</div>
+        <h1>🎯 تخمين الرقم</h1>
+        <div class="sub">خمن الرقم السري بين <span id="minDisplay">1</span> و <span id="maxDisplay">100</span></div>
 
-        <select id="suraSelect">
-            <option value="">📂 اختر السورة...</option>
-        </select>
-
-        <button id="loadBtn">📖 عرض الآيات</button>
-
-        <div id="ayaat">
-            <div class="loader">📚 اختر سورة ثم اضغط عرض</div>
+        <div class="range-box">
+            🔢 أدخل رقمك:
         </div>
 
-        <div class="footer">🕌 بسم الله الرحمن الرحيم</div>
+        <div class="input-group">
+            <input type="number" id="guessInput" placeholder="مثلاً 42" min="1" max="100">
+            <button class="btn" id="guessBtn">✅ خمّن</button>
+        </div>
+
+        <div id="message" class="message">🎯 ابدأ التخمين!</div>
+
+        <div class="stats">
+            <div>🔄 المحاولات: <span id="attempts">0</span></div>
+            <div>🎯 الرقم السري: <span id="secretDisplay">❓</span></div>
+        </div>
+
+        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 15px;">
+            <button class="btn btn-secondary" id="newGameBtn">🔄 لعبة جديدة</button>
+            <button class="btn btn-danger" id="resetBtn">🗑️ إعادة تعيين</button>
+        </div>
+
+        <div id="historyContainer">
+            <div style="font-size: 0.85rem; color: #888; margin-bottom: 5px;">📜 تاريخ التخمينات:</div>
+            <div class="history" id="historyList">
+                <span style="color: #666; font-size: 0.85rem;">لا توجد تخمينات بعد</span>
+            </div>
+        </div>
+
+        <div class="footer">🕹️ العب واستمتع | طور مهارات التخمين</div>
     </div>
 
     <script>
-        // ========== بيانات السور (مختصرة) ==========
-        const surahs = [
-            { id: 1, name: "الفاتحة", verses: 7 },
-            { id: 2, name: "البقرة", verses: 286 },
-            { id: 3, name: "آل عمران", verses: 200 },
-            { id: 4, name: "النساء", verses: 176 },
-            { id: 5, name: "المائدة", verses: 120 },
-            { id: 6, name: "الأنعام", verses: 165 },
-            { id: 7, name: "الأعراف", verses: 206 },
-            { id: 8, name: "الأنفال", verses: 75 },
-            { id: 9, name: "التوبة", verses: 129 },
-            { id: 10, name: "يونس", verses: 109 },
-            { id: 11, name: "هود", verses: 123 },
-            { id: 12, name: "يوسف", verses: 111 },
-            { id: 13, name: "الرعد", verses: 43 },
-            { id: 14, name: "إبراهيم", verses: 52 },
-            { id: 15, name: "الحجر", verses: 99 },
-            { id: 16, name: "النحل", verses: 128 },
-            { id: 17, name: "الإسراء", verses: 111 },
-            { id: 18, name: "الكهف", verses: 110 },
-            { id: 19, name: "مريم", verses: 98 },
-            { id: 20, name: "طه", verses: 135 },
-            { id: 21, name: "الأنبياء", verses: 112 },
-            { id: 22, name: "الحج", verses: 78 },
-            { id: 23, name: "المؤمنون", verses: 118 },
-            { id: 24, name: "النور", verses: 64 },
-            { id: 25, name: "الفرقان", verses: 77 },
-            { id: 26, name: "الشعراء", verses: 227 },
-            { id: 27, name: "النمل", verses: 93 },
-            { id: 28, name: "القصص", verses: 88 },
-            { id: 29, name: "العنكبوت", verses: 69 },
-            { id: 30, name: "الروم", verses: 60 },
-            { id: 31, name: "لقمان", verses: 34 },
-            { id: 32, name: "السجدة", verses: 30 },
-            { id: 33, name: "الأحزاب", verses: 73 },
-            { id: 34, name: "سبأ", verses: 54 },
-            { id: 35, name: "فاطر", verses: 45 },
-            { id: 36, name: "يس", verses: 83 },
-            { id: 37, name: "الصافات", verses: 182 },
-            { id: 38, name: "ص", verses: 88 },
-            { id: 39, name: "الزمر", verses: 75 },
-            { id: 40, name: "غافر", verses: 85 },
-            { id: 41, name: "فصلت", verses: 54 },
-            { id: 42, name: "الشورى", verses: 53 },
-            { id: 43, name: "الزخرف", verses: 89 },
-            { id: 44, name: "الدخان", verses: 59 },
-            { id: 45, name: "الجاثية", verses: 37 },
-            { id: 46, name: "الأحقاف", verses: 35 },
-            { id: 47, name: "محمد", verses: 38 },
-            { id: 48, name: "الفتح", verses: 29 },
-            { id: 49, name: "الحجرات", verses: 18 },
-            { id: 50, name: "ق", verses: 45 },
-            { id: 51, name: "الذاريات", verses: 60 },
-            { id: 52, name: "الطور", verses: 49 },
-            { id: 53, name: "النجم", verses: 62 },
-            { id: 54, name: "القمر", verses: 55 },
-            { id: 55, name: "الرحمن", verses: 78 },
-            { id: 56, name: "الواقعة", verses: 96 },
-            { id: 57, name: "الحديد", verses: 29 },
-            { id: 58, name: "المجادلة", verses: 22 },
-            { id: 59, name: "الحشر", verses: 24 },
-            { id: 60, name: "الممتحنة", verses: 13 },
-            { id: 61, name: "الصف", verses: 14 },
-            { id: 62, name: "الجمعة", verses: 11 },
-            { id: 63, name: "المنافقون", verses: 11 },
-            { id: 64, name: "التغابن", verses: 18 },
-            { id: 65, name: "الطلاق", verses: 12 },
-            { id: 66, name: "التحريم", verses: 12 },
-            { id: 67, name: "الملك", verses: 30 },
-            { id: 68, name: "القلم", verses: 52 },
-            { id: 69, name: "الحاقة", verses: 52 },
-            { id: 70, name: "المعارج", verses: 44 },
-            { id: 71, name: "نوح", verses: 28 },
-            { id: 72, name: "الجن", verses: 28 },
-            { id: 73, name: "المزمل", verses: 20 },
-            { id: 74, name: "المدثر", verses: 56 },
-            { id: 75, name: "القيامة", verses: 40 },
-            { id: 76, name: "الإنسان", verses: 31 },
-            { id: 77, name: "المرسلات", verses: 50 },
-            { id: 78, name: "النبأ", verses: 40 },
-            { id: 79, name: "النازعات", verses: 46 },
-            { id: 80, name: "عبس", verses: 42 },
-            { id: 81, name: "التكوير", verses: 29 },
-            { id: 82, name: "الانفطار", verses: 19 },
-            { id: 83, name: "المطففين", verses: 36 },
-            { id: 84, name: "الانشقاق", verses: 25 },
-            { id: 85, name: "البروج", verses: 22 },
-            { id: 86, name: "الطارق", verses: 17 },
-            { id: 87, name: "الأعلى", verses: 19 },
-            { id: 88, name: "الغاشية", verses: 26 },
-            { id: 89, name: "الفجر", verses: 30 },
-            { id: 90, name: "البلد", verses: 20 },
-            { id: 91, name: "الشمس", verses: 15 },
-            { id: 92, name: "الليل", verses: 21 },
-            { id: 93, name: "الضحى", verses: 11 },
-            { id: 94, name: "الشرح", verses: 8 },
-            { id: 95, name: "التين", verses: 8 },
-            { id: 96, name: "العلق", verses: 19 },
-            { id: 97, name: "القدر", verses: 5 },
-            { id: 98, name: "البينة", verses: 8 },
-            { id: 99, name: "الزلزلة", verses: 8 },
-            { id: 100, name: "العاديات", verses: 11 },
-            { id: 101, name: "القارعة", verses: 11 },
-            { id: 102, name: "التكاثر", verses: 8 },
-            { id: 103, name: "العصر", verses: 3 },
-            { id: 104, name: "الهمزة", verses: 9 },
-            { id: 105, name: "الفيل", verses: 5 },
-            { id: 106, name: "قريش", verses: 4 },
-            { id: 107, name: "الماعون", verses: 7 },
-            { id: 108, name: "الكوثر", verses: 3 },
-            { id: 109, name: "الكافرون", verses: 6 },
-            { id: 110, name: "النصر", verses: 3 },
-            { id: 111, name: "المسد", verses: 5 },
-            { id: 112, name: "الإخلاص", verses: 4 },
-            { id: 113, name: "الفلق", verses: 5 },
-            { id: 114, name: "الناس", verses: 6 }
-        ];
+        // =============================================
+        //  إعدادات اللعبة
+        // =============================================
+        const MIN = 1;
+        const MAX = 100;
 
-        // ========== ملء القائمة ==========
-        const select = document.getElementById('suraSelect');
-        surahs.forEach(s => {
-            const opt = document.createElement('option');
-            opt.value = s.id;
-            opt.textContent = `${s.id} - ${s.name} (${s.verses})`;
-            select.appendChild(opt);
-        });
+        let secretNumber = 0;
+        let attempts = 0;
+        let gameOver = false;
+        let history = [];
 
-        // ========== جلب الآيات من API ==========
-        async function loadAyahs(suraId) {
-            const container = document.getElementById('ayaat');
-            container.innerHTML = '<div class="loader">⏳ جاري التحميل...</div>';
+        // =============================================
+        //  عناصر DOM
+        // =============================================
+        const guessInput = document.getElementById('guessInput');
+        const guessBtn = document.getElementById('guessBtn');
+        const newGameBtn = document.getElementById('newGameBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const messageEl = document.getElementById('message');
+        const attemptsEl = document.getElementById('attempts');
+        const secretDisplay = document.getElementById('secretDisplay');
+        const historyList = document.getElementById('historyList');
+        const minDisplay = document.getElementById('minDisplay');
+        const maxDisplay = document.getElementById('maxDisplay');
 
-            try {
-                const res = await fetch(`https://api.alquran.cloud/v1/surah/${suraId}`);
-                const data = await res.json();
+        // =============================================
+        //  دوال اللعبة
+        // =============================================
+        function generateSecret() {
+            return Math.floor(Math.random() * (MAX - MIN + 1)) + MIN;
+        }
 
-                if (data.code === 200) {
-                    const ayahs = data.data.ayahs;
-                    let html = '';
-                    ayahs.forEach(a => {
-                        html += `<div class="aya">${a.text} <span class="aya-number">${a.numberInSurah}</span></div>`;
-                    });
-                    container.innerHTML = html;
-                } else {
-                    container.innerHTML = '<div class="loader">❌ خطأ في التحميل</div>';
-                }
-            } catch (e) {
-                container.innerHTML = '<div class="loader">⚠️ فشل الاتصال بالإنترنت</div>';
+        function resetGame() {
+            secretNumber = generateSecret();
+            attempts = 0;
+            gameOver = false;
+            history = [];
+            updateUI();
+            messageEl.className = 'message';
+            messageEl.textContent = '🎯 لعبة جديدة! ابدأ التخمين';
+            guessInput.disabled = false;
+            guessBtn.disabled = false;
+            guessInput.value = '';
+            guessInput.focus();
+            secretDisplay.textContent = '❓';
+        }
+
+        function endGame(won) {
+            gameOver = true;
+            guessInput.disabled = true;
+            guessBtn.disabled = true;
+            secretDisplay.textContent = secretNumber;
+
+            if (won) {
+                messageEl.className = 'message win';
+                messageEl.textContent = `🎉 مبروك! الرقم كان ${secretNumber} في ${attempts} محاولة! 🎉`;
+            } else {
+                messageEl.className = 'message lose';
+                messageEl.textContent = `😢 انتهت المحاولات! الرقم كان ${secretNumber}`;
             }
         }
 
-        // ========== الأزرار ==========
-        document.getElementById('loadBtn').addEventListener('click', () => {
-            const id = select.value;
-            if (id) loadAyahs(parseInt(id));
-            else {
-                document.getElementById('ayaat').innerHTML = '<div class="loader">📂 اختر سورة أولاً</div>';
+        function handleGuess() {
+            if (gameOver) {
+                messageEl.className = 'message';
+                messageEl.textContent = '🔄 انتهت اللعبة! اضغط "لعبة جديدة" للعب مرة أخرى';
+                return;
+            }
+
+            const rawValue = guessInput.value.trim();
+            if (rawValue === '') {
+                messageEl.className = 'message hint';
+                messageEl.textContent = '⚠️ أدخل رقماً أولاً!';
+                return;
+            }
+
+            const guess = Number(rawValue);
+            if (isNaN(guess) || !Number.isInteger(guess)) {
+                messageEl.className = 'message hint';
+                messageEl.textContent = '⚠️ يرجى إدخال رقم صحيح';
+                guessInput.value = '';
+                return;
+            }
+
+            if (guess < MIN || guess > MAX) {
+                messageEl.className = 'message hint';
+                messageEl.textContent = `⚠️ الرقم يجب أن يكون بين ${MIN} و ${MAX}`;
+                guessInput.value = '';
+                return;
+            }
+
+            // ✅ تخمين صحيح
+            attempts++;
+            history.push(guess);
+            guessInput.value = '';
+            guessInput.focus();
+
+            if (guess === secretNumber) {
+                endGame(true);
+                updateUI();
+                return;
+            }
+
+            // ❌ تخمين خاطئ
+            const isLow = guess < secretNumber;
+            messageEl.className = 'message hint';
+            messageEl.textContent = isLow
+                ? `📈 الرقم ${guess} أقل من الرقم السري. زوّد!`
+                : `📉 الرقم ${guess} أكبر من الرقم السري. نقّص!`;
+
+            // حد أقصى 10 محاولات
+            if (attempts >= 10) {
+                endGame(false);
+            }
+
+            updateUI();
+        }
+
+        // =============================================
+        //  تحديث الواجهة
+        // =============================================
+        function updateUI() {
+            attemptsEl.textContent = attempts;
+
+            // تحديث تاريخ التخمينات
+            if (history.length === 0) {
+                historyList.innerHTML = '<span style="color: #666; font-size: 0.85rem;">لا توجد تخمينات بعد</span>';
+                return;
+            }
+
+            let html = '';
+            history.forEach((num, index) => {
+                let cls = 'badge';
+                if (num === secretNumber && gameOver) cls += ' correct';
+                else if (num < secretNumber) cls += ' low';
+                else cls += ' high';
+                html += `<span class="${cls}">#${index + 1}: ${num}</span>`;
+            });
+            historyList.innerHTML = html;
+        }
+
+        // =============================================
+        //  الأحداث
+        // =============================================
+        guessBtn.addEventListener('click', handleGuess);
+
+        guessInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                handleGuess();
             }
         });
 
-        // تحميل أول سورة تلقائياً عند فتح الصفحة
-        window.onload = () => {
-            select.value = '1';
-            loadAyahs(1);
-        };
+        newGameBtn.addEventListener('click', resetGame);
+
+        resetBtn.addEventListener('click', () => {
+            if (confirm('🗑️ هل تريد حذف كل التخمينات وبدء لعبة جديدة؟')) {
+                resetGame();
+            }
+        });
+
+        // =============================================
+        //  بدء اللعبة
+        // =============================================
+        minDisplay.textContent = MIN;
+        maxDisplay.textContent = MAX;
+        resetGame();
     </script>
+
 </body>
 </html>
