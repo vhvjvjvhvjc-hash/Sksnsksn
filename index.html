@@ -1,330 +1,395 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>جولك تهكر؟ 😄</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>خدع بصرية 🔮</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(145deg, #0b0e1a 0%, #1a1f2f 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Segoe UI', 'Cairo', system-ui, sans-serif;
-      padding: 1rem;
-    }
+        body {
+            background: linear-gradient(145deg, #0b0e1a, #1a1f2f);
+            color: #eee;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
 
-    .card {
-      max-width: 600px;
-      width: 100%;
-      background: rgba(22, 28, 46, 0.85);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 3.5rem;
-      padding: 2.5rem 2rem;
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.7), 0 0 0 2px rgba(120, 200, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      transition: all 0.3s ease;
-      text-align: center;
-    }
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(12px);
+            border-radius: 48px;
+            padding: 30px 30px 50px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 215, 150, 0.06);
+            border: 1px solid rgba(255, 215, 150, 0.08);
+            text-align: center;
+        }
 
-    .card:hover {
-      box-shadow: 0 30px 60px rgba(0, 20, 40, 0.9), 0 0 0 3px rgba(0, 200, 255, 0.3);
-    }
+        h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #f0d8b0;
+            text-shadow: 0 0 30px rgba(200, 150, 70, 0.2);
+            margin-bottom: 10px;
+        }
 
-    .icon-hacker {
-      font-size: 4.2rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      animation: float 3.5s ease-in-out infinite;
-      filter: drop-shadow(0 8px 12px rgba(0, 150, 255, 0.3));
-    }
+        .sub {
+            color: #a09080;
+            margin-bottom: 40px;
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
 
-    @keyframes float {
-      0% { transform: translateY(0px) scale(1); }
-      50% { transform: translateY(-12px) scale(1.05); }
-      100% { transform: translateY(0px) scale(1); }
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
 
-    h1 {
-      color: #b3e4ff;
-      font-size: 2.6rem;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-shadow: 0 0 12px rgba(0, 180, 255, 0.5);
-      margin-bottom: 0.35rem;
-      word-break: break-word;
-    }
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 28px;
+            padding: 25px 20px 30px;
+            border: 1px solid rgba(255, 215, 150, 0.06);
+            transition: 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
 
-    .sub-title {
-      color: #8bb3d9;
-      font-size: 1.2rem;
-      font-weight: 400;
-      opacity: 0.9;
-      margin-bottom: 1.8rem;
-      border-bottom: 1px dashed rgba(100, 200, 255, 0.25);
-      padding-bottom: 1rem;
-    }
+        .card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 215, 150, 0.15);
+            transform: translateY(-6px);
+        }
 
-    .joke-box {
-      background: rgba(0, 20, 40, 0.5);
-      border-radius: 3rem;
-      padding: 1.2rem 1.8rem;
-      margin: 1.8rem 0 2.2rem;
-      border-left: 5px solid #00d0ff;
-      box-shadow: inset 0 0 20px rgba(0, 100, 200, 0.1);
-      backdrop-filter: blur(4px);
-    }
+        .card h3 {
+            color: #d4c0a8;
+            font-weight: 400;
+            margin-bottom: 16px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
 
-    .joke-text {
-      font-size: 1.7rem;
-      font-weight: 500;
-      color: #e0f2ff;
-      line-height: 1.5;
-      word-break: break-word;
-      min-height: 5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
+        .canvas-box {
+            background: #11141f;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.6);
+            margin-bottom: 14px;
+        }
 
-    .joke-text span {
-      background: rgba(0, 200, 255, 0.1);
-      padding: 0.1rem 0.8rem;
-      border-radius: 40px;
-      font-size: 1.8rem;
-    }
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 14px;
+            background: #11141f;
+            cursor: pointer;
+        }
 
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
+        .desc {
+            font-size: 0.85rem;
+            color: #887a6a;
+            line-height: 1.6;
+            margin-top: 6px;
+        }
 
-    .btn {
-      background: rgba(20, 40, 70, 0.7);
-      border: none;
-      padding: 0.9rem 2.2rem;
-      border-radius: 60px;
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #d6edff;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(100, 200, 255, 0.2);
-      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-      transition: 0.25s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      letter-spacing: 0.3px;
-      flex: 1 1 auto;
-      justify-content: center;
-    }
+        .btn-reset {
+            background: rgba(200, 150, 70, 0.12);
+            border: 1px solid rgba(255, 215, 150, 0.2);
+            color: #d4c0a8;
+            padding: 12px 36px;
+            border-radius: 40px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(4px);
+            font-family: inherit;
+        }
 
-    .btn-primary {
-      background: #0066cc;
-      background: linear-gradient(145deg, #0077ff, #0055bb);
-      border: 1px solid #4ab3ff;
-      color: white;
-      box-shadow: 0 0 20px rgba(0, 120, 255, 0.3);
-    }
+        .btn-reset:hover {
+            background: rgba(200, 150, 70, 0.25);
+            border-color: #f0d8a8;
+            box-shadow: 0 0 30px rgba(200, 150, 70, 0.15);
+        }
 
-    .btn-primary:hover {
-      background: linear-gradient(145deg, #1a8aff, #0066dd);
-      transform: scale(1.02);
-      box-shadow: 0 0 30px #0080ff80;
-      border-color: #8acbff;
-    }
+        .footer {
+            margin-top: 40px;
+            color: #5a4e40;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
 
-    .btn-secondary {
-      background: rgba(40, 60, 90, 0.6);
-      border-color: rgba(200, 200, 255, 0.15);
-    }
+        .badge {
+            display: inline-block;
+            background: rgba(200, 150, 70, 0.08);
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #a09080;
+            border: 1px solid rgba(255, 215, 150, 0.06);
+        }
 
-    .btn-secondary:hover {
-      background: rgba(70, 100, 150, 0.7);
-      transform: scale(1.02);
-      border-color: rgba(200, 230, 255, 0.4);
-    }
-
-    .btn:active {
-      transform: scale(0.96);
-    }
-
-    .footer-meta {
-      margin-top: 2.8rem;
-      font-size: 0.95rem;
-      color: #6a8baa;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      padding-top: 1.5rem;
-      display: flex;
-      justify-content: center;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-    }
-
-    .badge {
-      background: rgba(0, 180, 255, 0.08);
-      padding: 0.3rem 1.2rem;
-      border-radius: 30px;
-      border: 1px solid rgba(0, 180, 255, 0.1);
-      font-weight: 300;
-      letter-spacing: 0.5px;
-    }
-
-    .badge i {
-      font-style: normal;
-      display: inline-block;
-      animation: wink 2s infinite;
-    }
-
-    @keyframes wink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
-    }
-
-    @media (max-width: 480px) {
-      .card { padding: 1.8rem 1.2rem; border-radius: 2.5rem; }
-      h1 { font-size: 2.1rem; }
-      .joke-text { font-size: 1.4rem; }
-      .btn { font-size: 1rem; padding: 0.7rem 1.2rem; }
-      .icon-hacker { font-size: 3.2rem; }
-    }
-  </style>
+        @media (max-width: 700px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 20px; }
+            .grid { gap: 20px; }
+        }
+    </style>
 </head>
 <body>
-  <div class="card">
-    <!-- أيقونة "هاكر" -->
-    <div class="icon-hacker">🧑‍💻</div>
 
-    <h1>جولك تهكر؟</h1>
-    <div class="sub-title">✨ سكربت المزح التقني ✨</div>
+<div class="container">
 
-    <!-- منطقة النكتة / الرسالة -->
-    <div class="joke-box">
-      <div class="joke-text" id="jokeDisplay">
-        <span>🤖</span> انقر فوق الزر 👇
-      </div>
+    <h1>🔮 خدع بصرية</h1>
+    <div class="sub">— حرّك عينيك وانظر كيف تخدعك العقل —</div>
+
+    <div class="grid">
+
+        <!-- 1. تموج متحرك -->
+        <div class="card">
+            <h3>🌀 دوائر تدور</h3>
+            <div class="canvas-box">
+                <canvas id="c1" width="400" height="300"></canvas>
+            </div>
+            <div class="desc">دوائر تتحرك وكأنها تتدحرج — لكنها ثابتة.</div>
+        </div>
+
+        <!-- 2. خطوط متعرجة -->
+        <div class="card">
+            <h3>📏 خطوط منحنية</h3>
+            <div class="canvas-box">
+                <canvas id="c2" width="400" height="300"></canvas>
+            </div>
+            <div class="desc">خطوط مستقيمة تبدو منحنية بسبب الخلفية.</div>
+        </div>
+
+        <!-- 3. مربع يختفي -->
+        <div class="card">
+            <h3>◻️ نقاط سوداء</h3>
+            <div class="canvas-box">
+                <canvas id="c3" width="400" height="300"></canvas>
+            </div>
+            <div class="desc">ركز على نقطة — النقاط الأخرى تتلاشى!</div>
+        </div>
+
+        <!-- 4. صورة مقلوبة -->
+        <div class="card">
+            <h3>👤 وجه مزدوج</h3>
+            <div class="canvas-box">
+                <canvas id="c4" width="400" height="300"></canvas>
+            </div>
+            <div class="desc">وجه أم جهة؟ الدماغ يقرر.</div>
+        </div>
+
     </div>
 
-    <!-- أزرار التفاعل -->
-    <div class="btn-group">
-      <button class="btn btn-primary" id="hackBtn">
-        <span>⚡</span> تهكر 😈
-      </button>
-      <button class="btn btn-secondary" id="resetBtn">
-        <span>🔄</span> رجّع المزح
-      </button>
+    <button class="btn-reset" onclick="resetAll()">⟳ إعادة ضبط</button>
+
+    <div class="footer">
+        <span class="badge">🧠 خدع بصرية</span>
+        &nbsp;—&nbsp; صممها <strong>أحمد السوري</strong> &nbsp;•&nbsp; 2026
     </div>
 
-    <!-- تذييل مع جملة "أمزح معك يا صديقي" -->
-    <div class="footer-meta">
-      <span class="badge">💬 <i>أمزح معك يا صديقي</i></span>
-      <span class="badge">🛡️ #للضحك_فقط</span>
-    </div>
-  </div>
+</div>
 
-  <script>
-    (function() {
-      "use strict";
+<script>
+    // ═══════════ 1. دوائر تدور ═══════════
+    const c1 = document.getElementById('c1');
+    const ctx1 = c1.getContext('2d');
+    let rot = 0;
 
-      // مصدر النكات (جمل المزح) 
-      const jokes = [
-        "🧠 جارٍ اختراق عقلك... تم! أنت الآن تفكر بلغة البايثون 🐍",
-        "📡 جارٍ رفع مستوى التهكير... اكتمل! أنت هاكر من الدرجة الخامسة 😎",
-        "💾 تم اختراق ملفاتك السرية... وجدنا قائمة مشترياتك من البقالة 🛒",
-        "🖥️ نظامك تحت السيطرة... لكننا وجدنا صور قطط فقط 🐱",
-        "🔓 كلمة المرور الخاصة بك هي: 123456... أمزح معك يا صديقي 😂",
-        "⚙️ تهكير ناجح! لكننا أعدنا ضبط كل شيء كما كان ✨",
-        "📀 جارٍ تنزيل رامات إضافية... مزحة! بس نزلنا كوب قهوة ☕",
-        "🎮 تم تفعيل وضع الجوكر... هاهاها، بس أمزح معك يا صديقي 🤡",
-        "🔐 حسابك آمن 100%... لكننا غيرنا خلفية سطح المكتب إلى صور ديناصورات 🦕",
-        "🧩 اختراق وهمي بنسبة 99%... الـ 1% المتبقية هي ابتسامتك 😄"
-      ];
+    function drawCircles() {
+        const w = c1.width, h = c1.height;
+        ctx1.clearRect(0, 0, w, h);
 
-      // العناصر
-      const jokeDisplay = document.getElementById('jokeDisplay');
-      const hackBtn = document.getElementById('hackBtn');
-      const resetBtn = document.getElementById('resetBtn');
+        const cx = w/2, cy = h/2, r = 110;
+        const count = 12;
+        for (let i = 0; i < count; i++) {
+            const angle = (i / count) * Math.PI * 2 + rot;
+            const x = cx + Math.cos(angle) * r;
+            const y = cy + Math.sin(angle) * r;
+            ctx1.beginPath();
+            ctx1.arc(x, y, 22, 0, Math.PI * 2);
+            ctx1.fillStyle = `hsl(${i * 25 + rot * 20}, 60%, 55%)`;
+            ctx1.fill();
+            ctx1.shadowColor = 'rgba(255,215,150,0.15)';
+            ctx1.shadowBlur = 20;
+        }
 
-      // متغير لتخزين آخر نكتة تم عرضها (لتجنب التكرار المتتالي)
-      let lastJokeIndex = -1;
+        // مركز ثابت
+        ctx1.beginPath();
+        ctx1.arc(cx, cy, 18, 0, Math.PI * 2);
+        ctx1.fillStyle = '#f0d8a8';
+        ctx1.shadowBlur = 30;
+        ctx1.fill();
+        ctx1.shadowBlur = 0;
 
-      // دالة اختيار نكتة عشوائية (مع تجنب تكرار نفس النكتة مرتين متتاليتين)
-      function getRandomJoke() {
-        if (jokes.length === 0) return "😅 لا توجد نكات... أمزح معك يا صديقي!";
-        if (jokes.length === 1) return jokes[0];
+        rot += 0.015;
+        requestAnimationFrame(drawCircles);
+    }
+    drawCircles();
 
-        let newIndex;
-        do {
-          newIndex = Math.floor(Math.random() * jokes.length);
-        } while (newIndex === lastJokeIndex);
-        
-        lastJokeIndex = newIndex;
-        return jokes[newIndex];
-      }
+    // ═══════════ 2. خطوط منحنية ═══════════
+    const c2 = document.getElementById('c2');
+    const ctx2 = c2.getContext('2d');
 
-      // دالة تحديث النكتة مع تأثير بسيط
-      function updateJoke(text) {
-        // إضافة رمز تحميل وهمي لمتعة بصرية
-        jokeDisplay.style.transition = 'opacity 0.15s';
-        jokeDisplay.style.opacity = '0.5';
-        
-        setTimeout(() => {
-          // نضع النص مع أيقونة مرحة في البداية (اختياري)
-          // لكننا نحافظ على الأيقونة الموجودة في النص نفسه (من الجمل)
-          jokeDisplay.innerHTML = text;
-          jokeDisplay.style.opacity = '1';
-        }, 120);
-      }
+    function drawWavy() {
+        const w = c2.width, h = c2.height;
+        ctx2.clearRect(0, 0, w, h);
 
-      // حدث زر "تهكر" 😈
-      function handleHack() {
-        const randomJoke = getRandomJoke();
-        // نضيف لمسة: في بعض الأحيان نضع كلمة "تهكر" قبل النكتة
-        // لكن الجمل تحتوي بالفعل على نكات, نتركها كما هي
-        updateJoke(randomJoke);
-      }
+        // خلفية متدرجة
+        const grad = ctx2.createRadialGradient(w/2, h/2, 20, w/2, h/2, 220);
+        grad.addColorStop(0, '#1e2638');
+        grad.addColorStop(1, '#0b0e18');
+        ctx2.fillStyle = grad;
+        ctx2.fillRect(0, 0, w, h);
 
-      // حدث زر "رجّع المزح" (يعرض رسالة ثابتة أو نكتة محددة)
-      function handleReset() {
-        // نعرض جملة "أمزح معك يا صديقي" بشكل واضح مع لمسة
-        const resetMessage = `🤝 أمزح معك يا صديقي ... اضغط "تهكر" للضحك 😄`;
-        updateJoke(resetMessage);
-        // إعادة تعيين lastJokeIndex ليسمح بتكرار أي نكتة بعد reset
-        lastJokeIndex = -1;
-      }
+        // شبكة من المربعات الصغيرة
+        const step = 28;
+        for (let x = 0; x < w; x += step) {
+            for (let y = 0; y < h; y += step) {
+                const dx = x - w/2, dy = y - h/2;
+                const dist = Math.sqrt(dx*dx + dy*dy);
+                const phase = Math.sin(dist * 0.045 - Date.now() * 0.0006) * 8;
+                ctx2.fillStyle = `hsla(${40 + dist * 0.2}, 50%, ${55 + Math.sin(dist * 0.04) * 12}%, 0.7)`;
+                ctx2.fillRect(x + phase * 0.4, y + phase * 0.3, 5, 5);
+            }
+        }
 
-      // إضافة مستمعات الأحداث
-      hackBtn.addEventListener('click', handleHack);
-      resetBtn.addEventListener('click', handleReset);
+        // خطوط مستقيمة
+        ctx2.strokeStyle = 'rgba(255,215,150,0.08)';
+        ctx2.lineWidth = 1;
+        for (let i = 0; i < 18; i++) {
+            const y = 20 + i * 16;
+            ctx2.beginPath();
+            ctx2.moveTo(10, y);
+            ctx2.lineTo(w - 10, y + Math.sin(i * 0.5 + Date.now() * 0.0004) * 6);
+            ctx2.stroke();
+        }
 
-      // عند تحميل الصفحة نعرض رسالة ترحيبية (مزج بين الترحيب واللمسة)
-      window.addEventListener('DOMContentLoaded', function() {
-        // نعرض رسالة افتتاحية لطيفة
-        const welcomeMsg = `👋 أهلاً! اضغط "تهكر" ... أمزح معك يا صديقي 🤗`;
-        jokeDisplay.innerHTML = welcomeMsg;
-        // نجعل lastJokeIndex = -1 عادي
-        lastJokeIndex = -1;
-      });
+        requestAnimationFrame(drawWavy);
+    }
+    drawWavy();
 
-      // اختياري: إضافة تأثير كتابة عند الضغط (مجرد تحسين بسيط)
-      // لكننا نكتفي بالتأثير الموجود
+    // ═══════════ 3. نقاط سوداء ═══════════
+    const c3 = document.getElementById('c3');
+    const ctx3 = c3.getContext('2d');
 
-      console.log('✅ سكربت المزح جاهز! - #أمزح_معك_يا_صديقي');
-    })();
-  </script>
+    function drawDots() {
+        const w = c3.width, h = c3.height;
+        ctx3.clearRect(0, 0, w, h);
+        ctx3.fillStyle = '#141a28';
+        ctx3.fillRect(0, 0, w, h);
+
+        const cols = 12, rows = 9;
+        const spacingX = (w - 40) / (cols - 1);
+        const spacingY = (h - 40) / (rows - 1);
+
+        for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+                const x = 20 + c * spacingX;
+                const y = 20 + r * spacingY;
+                const isCenter = (r === Math.floor(rows/2) && c === Math.floor(cols/2));
+                const size = isCenter ? 8 : 5;
+                ctx3.beginPath();
+                ctx3.arc(x, y, size, 0, Math.PI * 2);
+                ctx3.fillStyle = isCenter ? '#f0d8a8' : '#1a1f2f';
+                ctx3.fill();
+                ctx3.shadowColor = isCenter ? 'rgba(255,215,150,0.3)' : 'rgba(0,0,0,0)';
+                ctx3.shadowBlur = isCenter ? 20 : 0;
+            }
+        }
+
+        // نقاط بيضاء صغيرة متحركة
+        for (let i = 0; i < 40; i++) {
+            const px = 30 + Math.sin(i * 0.7 + Date.now() * 0.0008) * (w/2 - 30);
+            const py = 30 + Math.cos(i * 0.5 + Date.now() * 0.0006) * (h/2 - 30);
+            ctx3.beginPath();
+            ctx3.arc(px, py, 2, 0, Math.PI * 2);
+            ctx3.fillStyle = 'rgba(255,255,255,0.08)';
+            ctx3.fill();
+        }
+
+        requestAnimationFrame(drawDots);
+    }
+    drawDots();
+
+    // ═══════════ 4. وجه مزدوج ═══════════
+    const c4 = document.getElementById('c4');
+    const ctx4 = c4.getContext('2d');
+
+    function drawFace() {
+        const w = c4.width, h = c4.height;
+        ctx4.clearRect(0, 0, w, h);
+        ctx4.fillStyle = '#111520';
+        ctx4.fillRect(0, 0, w, h);
+
+        const cx = w/2, cy = h/2;
+
+        // شكل الوجه (إناء / وجه)
+        ctx4.fillStyle = '#d4c0a8';
+        ctx4.beginPath();
+        // الجانب الأيمن (أنف وفم)
+        ctx4.moveTo(cx + 10, cy - 70);
+        ctx4.quadraticCurveTo(cx + 80, cy - 50, cx + 70, cy + 20);
+        ctx4.quadraticCurveTo(cx + 50, cy + 50, cx + 10, cy + 40);
+        // الجانب الأيسر (وجه آخر)
+        ctx4.quadraticCurveTo(cx - 50, cy + 50, cx - 70, cy + 20);
+        ctx4.quadraticCurveTo(cx - 80, cy - 50, cx - 10, cy - 70);
+        ctx4.closePath();
+        ctx4.fill();
+
+        // عينان
+        ctx4.fillStyle = '#0b0e18';
+        ctx4.beginPath();
+        ctx4.arc(cx - 30, cy - 20, 10, 0, Math.PI * 2);
+        ctx4.fill();
+        ctx4.beginPath();
+        ctx4.arc(cx + 30, cy - 20, 10, 0, Math.PI * 2);
+        ctx4.fill();
+
+        // أنف
+        ctx4.strokeStyle = '#0b0e18';
+        ctx4.lineWidth = 2;
+        ctx4.beginPath();
+        ctx4.moveTo(cx, cy - 5);
+        ctx4.lineTo(cx, cy + 15);
+        ctx4.stroke();
+
+        // فم
+        ctx4.beginPath();
+        ctx4.arc(cx, cy + 28, 18, 0, Math.PI);
+        ctx4.stroke();
+
+        // تأثير توهج
+        const grad = ctx4.createRadialGradient(cx, cy, 20, cx, cy, 150);
+        grad.addColorStop(0, 'rgba(200,150,70,0.05)');
+        grad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx4.fillStyle = grad;
+        ctx4.fillRect(0, 0, w, h);
+
+        requestAnimationFrame(drawFace);
+    }
+    drawFace();
+
+    // ═══════════ إعادة ضبط ═══════════
+    function resetAll() {
+        rot = 0;
+        // مجرد إعادة تشغيل الحركات
+    }
+</script>
+
 </body>
 </html>
